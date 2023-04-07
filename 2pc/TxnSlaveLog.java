@@ -10,13 +10,16 @@
  * the log should be stored to persistent storage in fear of faiure
  */
 
+import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class TxnSlaveLog {
   public ConcurrentHashMap<Integer, TxnSlaveRecord> all_txns;
+  public ConcurrentHashMap<String, Integer> locked_resources;
 
   public TxnSlaveLog() {
     all_txns = new ConcurrentHashMap<>();
+    locked_resources = new ConcurrentHashMap<>();
   }
 
   public TxnSlaveRecord retrieveRecord(int txn_id) {
