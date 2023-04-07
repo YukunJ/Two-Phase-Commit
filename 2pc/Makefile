@@ -5,7 +5,7 @@ JFLAGS = -g
 JC = javac
 
 # set necessary environment variables as well
-all: Server.class UserNode.class TxnDecision.class TxnMasterRecord.class TxnMasterLog.class TxnSlaveRecord.class TxnSlaveLog.class
+all: Server.class UserNode.class TxnDecision.class TxnMasterRecord.class TxnMasterLog.class TxnSlaveRecord.class TxnSlaveLog.class TxnPhase.class TxnVote.class CoordinatorMsg.class ParticipantMsg.class
 
 %.class: %.java
 	$(JC) $(JFLAGS) $*.java
@@ -20,7 +20,7 @@ format:
 .PHONY: submit
 submit:
 	# submit by compressing tar
-	tar cvzf ../mysolution.tgz Makefile Server.java UserNode.java TxnDecision.java TxnMasterRecord.java TxnMasterLog.java TxnSlaveRecord.java TxnSlaveLog.java
+	tar cvzf ../mysolution.tgz Makefile Server.java UserNode.java TxnDecision.java TxnMasterRecord.java TxnMasterLog.java TxnSlaveRecord.java TxnSlaveLog.java TxnPhase.java TxnVote.java CoordinatorMsg.java ParticipantMsg.java
 
 # clean up command
 .PHONY: clean

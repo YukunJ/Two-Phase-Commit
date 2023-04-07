@@ -24,7 +24,7 @@ public class TxnSlaveLog {
   }
 
   public TxnSlaveRecord createRecord(
-      int txn_id, String filename, String[] resources_requested, TxnSlaveRecord.Vote vote) {
+      int txn_id, String filename, String[] resources_requested, TxnVote vote) {
     TxnSlaveRecord new_record = new TxnSlaveRecord(txn_id, filename, resources_requested, vote);
     all_txns.put(txn_id, new_record);
     return new_record;

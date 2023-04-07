@@ -14,15 +14,13 @@
 import java.io.Serializable;
 
 public class TxnSlaveRecord implements Serializable {
-  enum Vote { APPROVAL, DENIAL }
-
   public final int txn_id;
   public final String filename;
   public final String[] resources_requested;
-  public final Vote vote;
+  public final TxnVote vote;
   public TxnDecision decision;
 
-  public TxnSlaveRecord(int txn_id, String filename, String[] resources_requested, Vote vote) {
+  public TxnSlaveRecord(int txn_id, String filename, String[] resources_requested, TxnVote vote) {
     this.txn_id = txn_id;
     this.filename = filename;
     this.resources_requested = resources_requested;
