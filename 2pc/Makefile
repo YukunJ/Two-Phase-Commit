@@ -20,7 +20,7 @@ format:
 .PHONY: submit
 submit:
 	# submit by compressing tar
-	tar cvzf ../mysolution.tgz Makefile Server.java UserNode.java TxnDecision.java TxnMasterRecord.java TxnMasterLog.java TxnSlaveRecord.java TxnSlaveLog.java TxnPhase.java TxnVote.java CoordinatorMsg.java ParticipantMsg.java
+	tar cvzf ../mysolution.tgz design.pdf Makefile Server.java UserNode.java TxnDecision.java TxnMasterRecord.java TxnMasterLog.java TxnSlaveRecord.java TxnSlaveLog.java TxnPhase.java TxnVote.java CoordinatorMsg.java ParticipantMsg.java
 
 # clean up command
 .PHONY: clean

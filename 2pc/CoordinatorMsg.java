@@ -31,16 +31,19 @@ public class CoordinatorMsg implements Serializable {
     this.decision = decision;
   }
 
+  /* factory method to generate Phase I message */
   public static CoordinatorMsg GeneratePhaseIMsg(
       int txn_id, String filename, byte[] img, String[] resource_requested) {
     return new CoordinatorMsg(
         txn_id, TxnPhase.PHASE_I, filename, img, resource_requested, TxnDecision.UNDECIDED);
   }
 
+  /* factory method to generate Phase II message */
   public static CoordinatorMsg GeneratePhaseIIMsg(int txn_id, TxnDecision decision) {
     return new CoordinatorMsg(txn_id, TxnPhase.PHASE_II, null, null, null, decision);
   }
 
+  /* Wrapper for the PL message sending */
   public void sendMyselfTo(ProjectLib PL, String destination) {
     try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
          ObjectOutputStream oos = new ObjectOutputStream(bos)) {
@@ -54,6 +57,7 @@ public class CoordinatorMsg implements Serializable {
     }
   }
 
+  /* convert raw bytes back to the Coordinator msg */
   public static CoordinatorMsg deserialize(ProjectLib.Message msg) {
     CoordinatorMsg coordinatorMsg = null;
     try (ByteArrayInputStream bis = new ByteArrayInputStream(msg.body);

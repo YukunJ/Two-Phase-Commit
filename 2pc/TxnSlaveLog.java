@@ -10,10 +10,10 @@
  * the log should be stored to persistent storage in fear of faiure
  */
 
-import java.util.HashSet;
+import java.io.Serializable;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class TxnSlaveLog {
+public class TxnSlaveLog implements Serializable {
   public ConcurrentHashMap<Integer, TxnSlaveRecord> all_txns;
   public ConcurrentHashMap<String, Integer> locked_resources;
 

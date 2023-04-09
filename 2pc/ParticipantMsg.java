@@ -23,14 +23,17 @@ public class ParticipantMsg implements Serializable {
     this.vote = vote;
   }
 
+  /* factory method for Phase I message */
   public static ParticipantMsg GeneratePhaseIMsg(int txn_id, TxnVote vote) {
     return new ParticipantMsg(txn_id, TxnPhase.PHASE_I, vote);
   }
 
+  /* factory method for Phase II message */
   public static ParticipantMsg GeneratePhaseIIMsg(int txn_id) {
     return new ParticipantMsg(txn_id, TxnPhase.PHASE_II, TxnVote.NOT_VOTE);
   }
 
+  /* Wrapper method to send a message through PL */
   public void sendMyselfTo(ProjectLib PL, String destination) {
     try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
          ObjectOutputStream oos = new ObjectOutputStream(bos)) {
@@ -44,6 +47,7 @@ public class ParticipantMsg implements Serializable {
     }
   }
 
+  /* convert raw bytes back to ParticipantMsg */
   public static ParticipantMsg deserialize(ProjectLib.Message msg) {
     ParticipantMsg participantMsg = null;
     try (ByteArrayInputStream bis = new ByteArrayInputStream(msg.body);
